@@ -1,4 +1,4 @@
-package by.my.booking.searchroom;
+package by.my.booking.accomodation;
 
 import by.my.booking.BasePage;
 import org.openqa.selenium.By;
@@ -7,9 +7,9 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
-public class SearchDoubleRoom extends BasePage {
+public class SearchRoomPage extends BasePage {
 
-    public SearchDoubleRoom(WebDriver driver) {
+    public SearchRoomPage(WebDriver driver) {
         super(driver);
     }
 

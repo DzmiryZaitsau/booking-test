@@ -1,6 +1,6 @@
-package by.my.booking.searchroom;
+package by.my.booking;
 
-import by.my.booking.BasePage;
+import by.my.booking.accomodation.SearchRoomPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -14,6 +14,12 @@ public class MainPageBooking extends BasePage {
         super(driver);
         PageFactory.initElements(driver, this);
     }
+
+    @FindBy(xpath = "//span[contains(text(),'Авиабилеты')]")
+    private WebElement aviaTicket;
+
+    @FindBy(xpath = "//span[@class='xpb__link__text']")
+    private WebElement carRentals;
 
     @FindBy(xpath = "//input[@id='ss']")
     private WebElement searchField;
@@ -45,7 +51,15 @@ public class MainPageBooking extends BasePage {
     @FindBy(xpath = "//select[@id='group_adults']//option[@value='6']")
     private WebElement choice6Adults;
 
-    public SearchDoubleRoom searchRooms() {
+    public void openCarRentalPage() {
+        carRentals.click();
+    }
+
+    public void openAviaTicket() {
+        aviaTicket.click();
+    }
+
+    public SearchRoomPage searchRooms() {
         searchField.sendKeys("Минск");
         dates.click();
         moveIn.click();
@@ -57,7 +71,7 @@ public class MainPageBooking extends BasePage {
         choice6Adults.click();
         searchButton.submit();
 
-        return new SearchDoubleRoom(driver);
+        return new SearchRoomPage(driver);
     }
 
 

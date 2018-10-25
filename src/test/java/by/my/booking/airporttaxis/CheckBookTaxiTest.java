@@ -1,4 +1,4 @@
-package by.my.booking.carrentals;
+package by.my.booking.airporttaxis;
 
 import by.my.booking.BaseTest;
 import by.my.booking.MainPageBooking;
@@ -8,28 +8,28 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-//check searching available rental cars
-public class CheckCarRentalsTest extends BaseTest {
+//check searching taxi from airport of Minsk to Minsk.
+public class CheckBookTaxiTest extends BaseTest {
 
     @BeforeTest
     public WebDriver startBrowser() {
         startChrom();
         MainPageBooking mainPageBooking = new MainPageBooking(driver);
-        mainPageBooking.openCarRentalPage();
+        mainPageBooking.openAirportTaxis();
         switchWindow();
         return driver;
     }
 
     @Test
-    public void checkCarRentals() {
-        CarRentalPage carRentalPage = new CarRentalPage(driver);
-        carRentalPage.checkAvailabilityCars();
-        SearchCarsPage searchCarsPage = new SearchCarsPage(driver);
-        Assert.assertTrue(searchCarsPage.checkCars()>=1);
+    public void checkTaxis() {
+        SearchTaxisPage searchTaxisPage;
+        AirportTaxisPage airportTaxisPage = new AirportTaxisPage(driver);
+        searchTaxisPage = airportTaxisPage.searchTaxis();
+        Assert.assertTrue(searchTaxisPage.checkAvailableTaxis()>=1);
     }
+
     @AfterTest
     public void closeBrowser() {
         closeChrom();
-
     }
 }

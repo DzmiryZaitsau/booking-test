@@ -21,6 +21,9 @@ public class MainPageBooking extends BasePage {
     @FindBy(xpath = "//span[@class='xpb__link__text']")
     private WebElement carRentals;
 
+    @FindBy(xpath = "//div[@id='cross-product-bar']//div[1]//a[3]//span[1]")
+    private WebElement airportTaxis;
+
     @FindBy(xpath = "//input[@id='ss']")
     private WebElement searchField;
 
@@ -57,6 +60,10 @@ public class MainPageBooking extends BasePage {
 
     public void openAviaTicket() {
         aviaTicket.click();
+    }
+
+    public void openAirportTaxis() {
+        airportTaxis.click();
     }
 
     public SearchRoomPage searchRooms() {
